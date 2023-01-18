@@ -13,11 +13,7 @@ class BogPayServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->publishes([
-            __DIR__ . '/config/bogpay.php' => config_path('bogpay.php'),
-        ], 'config');
 
-        $this->mergeConfigFrom(__DIR__ . '/config/bogpay.php', 'bogpay');
     }
 
     /**
