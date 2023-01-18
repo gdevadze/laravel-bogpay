@@ -1,0 +1,25 @@
+{
+    "name": "devadze/bog-pay",
+    "description": "BOG Payment For Laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Devadze\\BogPay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Giorgi Devadze"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Devadze\\BogPay\\BogPayServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
