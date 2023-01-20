@@ -2,6 +2,7 @@
 
 namespace Devadze\BogPay;
 
+use Carbon\Carbon;
 use Devadze\BogPay\Models\BogPayTransaction;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -70,10 +71,16 @@ class BogPay
 
     public function callbackPayment(Model $model,$data = [])
     {
+        $isPaid = 0;
+        if ($data->order_status->key == 'completed'){
+            $isPaid = 1;
+        }
         $model->update([
-            'status' => $data->order_status->key
+            'status' => $data->order_status->key,
+            'is_paid' => $isPaid,
+            'completed_at' => ($isPaid == 1) ? Carbon::now() : null
         ]);
-        return $model->model->id;
+        return true;
     }
 
     public function orderDetail(string $orderId)
